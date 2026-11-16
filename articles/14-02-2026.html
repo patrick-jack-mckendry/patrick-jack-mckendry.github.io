@@ -20,6 +20,18 @@ body::before {
 .poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
 @media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
 @media (prefers-reduced-motion: reduce) { body::before { background-position: center top; } }
+@media (max-width: 600px) {
+  .poem-sheet { font-size: 13px; }
+  .poem-sheet h1 { font-size: 21px; }
+  .poem-sheet .verse, .poem-sheet > p { overflow-wrap: break-word; }
+  body::before {
+    inset: 0; height: 100vh;
+    background-repeat: repeat-y;
+    background-position: center top !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
 </style>
 </head>
 
@@ -75,7 +87,7 @@ body::before {
 
 <script>
 (function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce), (max-width: 600px)').matches) return;
   let scheduled = false;
   function update() {
     document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
