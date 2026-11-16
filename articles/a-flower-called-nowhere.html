@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Flower Called Nowhere — Patrick McKendry</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+body { background: #faf7ca; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("../images/a-flower-called-nowhere-background.jpg");
+  background-position: center var(--background-y, 0px);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.poem-sheet { position: relative; z-index: 1; background: rgba(255, 253, 229, .75); padding: 25px 30px 35px; }
+.poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
+.poem-sheet .verse { white-space: pre-line; line-height: 1.65; }
+@media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { body::before { background-position: center top; } }
+</style>
+</head>
+<body>
+<main class="poem-sheet">
+<p><a href="../index.html">← Home</a></p>
+<h1>A Flower Called Nowhere</h1>
+<p class="verse">Stereolabic sounds
+Inside ears
+From speakerphones on bedside tables
+And fabled freaks sound
+I’m bedroom-bound!
+My freak-fuelled brain found
+A transgressive train of reddit porn allowed
+To me by 4K TV
+Transferred screen to screen.
+And body bound to same skin
+On diamond sheets in thin bling
+A rhythmic pulse that starts to sing
+A rhythmic pulse from limb to limb
+A rhythmic pulse in ear canal
+A rhythmic pulse while I watch Hal
+As he fucks Mal in ways anal
+And I get rocks off to these pals.</p>
+</main>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
+</body>
+</html>
