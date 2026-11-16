@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Farrier — Patrick McKendry</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+body { background: #faf7ca; }
+body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 200vh; z-index: 0; pointer-events: none;
+  background-image: url("../images/a-flower-called-nowhere-background.jpg");
+  background-position: center top; background-size: 100% auto; background-repeat: no-repeat;
+  transform: translate3d(0, var(--background-y, 0px), 0);
+  will-change: transform; backface-visibility: hidden;
+}
+.poem-sheet { position: relative; z-index: 1; background: rgba(255, 253, 229, .75); padding: 25px 30px 35px; }
+.poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
+.poem-sheet .verse { white-space: pre-line; line-height: 1.65; }
+@media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { body::before { transform: none; } }
+</style>
+</head>
+<body>
+<main class="poem-sheet">
+<p><a href="../anthology.html">← Anthology</a></p>
+<h1>The Farrier</h1>
+<p class="verse">Hairy hungry fucker
+Hairy hairy tail
+Nails
+Hooves.
+
+Loser horse kicked me down
+And round and round and loud loud sounds
+In hairy ears
+Put pursed lips on hips and ears
+And hear my horsey sigh.
+Your lairy starey eye eyes
+And crowing cock
+And flies.
+
+Hairy fucker wants food now
+Hey now hand me hay now
+Hairy fucker knows nothing at all
+Hungry fucker knows how to crawl.</p>
+</main>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.9).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
+</body>
+</html>
