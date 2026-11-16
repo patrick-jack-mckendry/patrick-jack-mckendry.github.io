@@ -8,11 +8,24 @@
     <title>14/02/2026</title>
 
     <link rel="stylesheet" href="../style.css">
+<style>
+body { background: #faf7ca; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("../images/i-am-here-background.jpg");
+  background-position: center var(--background-y, 0px);
+  background-size: 100% auto; background-repeat: no-repeat;
+}
+.poem-sheet { position: relative; z-index: 1; background: rgba(255,253,229,.75); padding: 25px 30px 35px; }
+.poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
+@media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { body::before { background-position: center top; } }
+</style>
 </head>
 
 <body>
 
-    <main>
+    <main class="poem-sheet">
 
         <p><a href="../anthology.html">← Anthology</a></p>
 
@@ -58,6 +71,20 @@
 
     </main>
 
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
 </body>
 
 </html>
