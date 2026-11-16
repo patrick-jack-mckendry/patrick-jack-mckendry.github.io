@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tortoise — Patrick McKendry</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+body { background: #faf7ca; }
+body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 200vh; z-index: 0; pointer-events: none;
+  background-image: url("../images/a-flower-called-nowhere-background.jpg");
+  background-position: center top; background-size: 100% auto; background-repeat: no-repeat;
+  transform: translate3d(0, var(--background-y, 0px), 0);
+  will-change: transform; backface-visibility: hidden;
+}
+.poem-sheet { position: relative; z-index: 1; background: rgba(255, 253, 229, .75); padding: 25px 30px 35px; }
+.poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
+.poem-sheet .verse { white-space: pre-line; line-height: 1.65; }
+@media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { body::before { transform: none; } }
+</style>
+</head>
+<body>
+<main class="poem-sheet">
+<p><a href="../anthology.html">← Anthology</a></p>
+<h1>The Tortoise</h1>
+<p class="verse">I was forged in fire and wet concrete.
+I was forged in a furnace that burned so bright I thought it was the voice of the Lord,
+And I heard it,
+And I heard it well.
+And I was born with necrotic limbs which favoured my left-side brain
+And tried to strangle my funny little neck.
+And I had a silly pink car and the damn cops came round and asked if anyone owned it
+And I asked them if anyone had seen my silly pink car, because I had lost it.
+They said no.
+I shut the door.
+And I thought
+Tomorrow I commit myself completely.
+Tomorrow I am the worm amongst oysters.
+Tomorrow I am on the agenda.</p>
+</main>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.9).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
+</body>
+</html>
