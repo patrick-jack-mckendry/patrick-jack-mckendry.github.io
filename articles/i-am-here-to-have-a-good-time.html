@@ -73,7 +73,7 @@ Fast.</p>
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let scheduled = false;
   function update() {
-    document.body.style.setProperty('--background-y', (-window.scrollY * 0.35).toFixed(1) + 'px');
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
     scheduled = false;
   }
   window.addEventListener('scroll', function () {
