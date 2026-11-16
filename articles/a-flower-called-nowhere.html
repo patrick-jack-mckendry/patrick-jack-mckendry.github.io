@@ -51,7 +51,7 @@ And I get rocks off to these pals.</p>
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let scheduled = false;
   function update() {
-    document.body.style.setProperty('--background-y', (-window.scrollY * 0.65).toFixed(1) + 'px');
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.9).toFixed(1) + 'px');
     scheduled = false;
   }
   window.addEventListener('scroll', function () {
