@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daisy Lady — Patrick McKendry</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+body { background: #faf7ca; }
+body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 200vh; z-index: 0; pointer-events: none;
+  background-image: url("../images/i-am-here-background.jpg");
+  background-position: center top; background-size: 100% auto; background-repeat: no-repeat;
+  transform: translate3d(0, var(--background-y, 0px), 0);
+  will-change: transform; backface-visibility: hidden;
+}
+.poem-sheet { position: relative; z-index: 1; background: rgba(255, 253, 229, .75); padding: 25px 30px 35px; }
+.poem-sheet h1 { font-size: 24px; margin-bottom: 28px; }
+.poem-sheet .verse { white-space: pre-line; line-height: 1.65; }
+@media (max-width:600px) { .poem-sheet { padding: 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { body::before { transform: none; } }
+</style>
+</head>
+<body>
+<main class="poem-sheet">
+<p><a href="../anthology.html">← Anthology</a></p>
+<h1>Daisy Lady</h1>
+<p class="verse">Daisy lady comes round lately
+And I says I say daisy lady u r crazy!
+Soft cheeses and creams she brings me
+Oft sneezes and dreams she sings me
+And we sit on hill top
+On grey grass
+Lost at last
+But loose boozers need snoozers sometimes
+Say daisy lady
+Daytime loser lazy cruiser daisy lady
+She sleeps
+And I lie
+And sheep pound toes on fertile ground
+And goats encircle my sterile mound
+And two brown cows now
+Like statues now
+And they were at a right angle so pure I could hardly believe
+And they said ‘Be Not Afraid’ and I shrieked and I shrieked
+And they said ‘Be Not Afraid’ and I shrieked and I shrieked and I shrieked
+And they said ‘Be Not Afraid, for we are an angel of the Lord’.
+
+And I shrieked and I shrieked and I shrieked and I shrieked
+For I knew they were of Yaldabaoth
+I knew they were of Baal
+I knew they were of Moloch
+I knew they were of Beelzebub
+I knew they held my name, my voice and I had little choice
+So I sat full lotus.
+
+And she said fuck my porus fuck holes babe
+And I thought about how I gotta get laid,
+American style.
+
+And stop
+And stoop down low
+And hold my hand
+And go</p>
+</main>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
+</body>
+</html>
