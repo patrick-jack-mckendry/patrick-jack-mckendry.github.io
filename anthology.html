@@ -6,22 +6,21 @@
     <title>Anthology — Patrick McKendry</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      body {
-        background-color: #faf7ca;
-        background-image: url("images/anthology-background.jpg");
+      body { background: #faf7ca; }
+      body::before {
+        content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+        background-image: url("images/i-am-here-background.jpg");
+        background-position: center var(--background-y, 0px);
         background-size: 100% auto;
-        background-position: center top;
         background-repeat: no-repeat;
-        background-attachment: fixed;
       }
       main {
-        position: relative;
-        background: rgba(255, 253, 229, 0.75);
+        position: relative; z-index: 1;
+        background: rgba(255, 253, 229, .75);
         padding: 25px 30px 35px;
       }
-      @media (max-width: 600px) {
-        main { padding: 18px 16px; }
-      }
+      @media (max-width: 600px) { main { padding: 18px 16px; } }
+      @media (prefers-reduced-motion: reduce) { body::before { background-position: center top; } }
     </style>
 </head>
 <body>
@@ -42,5 +41,19 @@
 
     <p><a href="articles/14-02-2026.html">Sunny Day Reflection Poem</a></p>
     </main>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let scheduled = false;
+  function update() {
+    document.body.style.setProperty('--background-y', (-window.scrollY * 0.5).toFixed(1) + 'px');
+    scheduled = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}());
+</script>
 </body>
 </html>
